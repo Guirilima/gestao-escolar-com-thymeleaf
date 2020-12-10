@@ -6,25 +6,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class InstituicaoEntity {
+public class AlunoEntity {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(length = 30)
+    @Column(length = 50)
     private String nome;
 
-    @Column(length = 100)
-    private String endereco;
+    @Column(precision = 0) //para não ter nenhuma casa decimal.
+    private int idade;
 
-    @OneToMany(mappedBy = "instituicao")
-    private Set<AlunoEntity> alunoEntities;
+    @ManyToOne
+    private InstituicaoEntity instituicao;
 }
